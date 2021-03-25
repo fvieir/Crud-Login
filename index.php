@@ -1,6 +1,6 @@
 <?php 
 
-require "Controler/HomeControler.php";
+require "App/Controler/HomeControler.php";
 
 $pagina = isset($_GET['pagina']) ? $_GET['pagina'] : "index";
 

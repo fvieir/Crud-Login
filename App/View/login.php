@@ -10,7 +10,7 @@
         <title>Treinando MVC</title>
     </head>
     <body class="text-center">
-        <form class="form-signin">
+        <form class="form-signin" method = "POST" action ="LoginControler.php">
             <img class="mb-4" src="imagens/logo.png" alt="" width="72" height="72">
             <h1 class="h3 mb-3 font-weight-normal">Area Restrita</h1>
                 <div class="form-group">
