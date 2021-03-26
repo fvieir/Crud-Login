@@ -2,24 +2,18 @@
 
 require "App/Controler/HomeControler.php";
 
-$pagina = isset($_GET['pagina']) ? $_GET['pagina'] : "index";
+$pagina = isset($_GET['pagina']) ? $_GET['pagina'] : 'painel';
 
 $ctrl = new HomeControler();
 
 switch ($pagina) {
-	case 'index':
-		$ctrl->index();
+	case 'painel':
+		$ctrl->painel();
 		break;
 
 	case 'login':
 		$ctrl->login();
 		break;
-
-	case 'painel':
-		$ctrl->painel();
-		break;
-
 }
-
 
 ?>

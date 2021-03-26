@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="pt-br">
     <head>
@@ -6,24 +7,24 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" >
-        <link rel="stylesheet" href="css/signin.css">
+        <link rel="stylesheet" href="Public/css/signin.css">
         <title>Treinando MVC</title>
     </head>
     <body class="text-center">
-        <form class="form-signin" method = "POST" action ="LoginControler.php">
-            <img class="mb-4" src="imagens/logo.png" alt="" width="72" height="72">
-            <h1 class="h3 mb-3 font-weight-normal">Area Restrita</h1>
-                <div class="form-group">
-                    <label>Usuário</label>
-                    <input type="text" class="form-control" placeholder="Digite seu usuário">
-                </div>
-                <div class="form-group">
-                    <label>Senha</label>
-                    <input type="password" class="form-control" placeholder="Digite sua senha">
-                </div>
-            <button type="submit" class="btn btn-lg btn-primary btn-block" style="margin-bottom: 20px;">Acessar</button>
-                <p class="text-center text-primary">Esqueceu a senha?</p>
-        </form>
+            <form class="form-signin" method = "POST" action ="App/Controler/LoginControler.php">
+                <img class="mb-4" src="imagens/logo.png" alt="" width="72" height="72">
+                <h1 class="h3 mb-3 font-weight-normal">Area Restrita</h1>
+                    <div class="form-group">
+                        <label>Usuário</label>
+                        <input type="text" class="form-control" placeholder="Digite seu usuário">
+                    </div>
+                    <div class="form-group">
+                        <label>Senha</label>
+                        <input type="password" class="form-control" placeholder="Digite sua senha">
+                    </div>
+                <button type="submit" name ="sendLogin" class="btn btn-lg btn-primary btn-block" style="margin-bottom: 20px;">Acessar</button>
+            </form>
+
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>

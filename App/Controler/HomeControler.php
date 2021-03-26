@@ -1,18 +1,13 @@
 <?php
 
-
 class HomeControler 
 {
-	function index(){
-		echo "chamou o index";
+	function painel(){
+		require "App/View/painel.php";
 	}
 
 	function login(){
 		require "App/View/login.php";
-	}
-
-   function painel(){
-		echo"login";
 	}
 
 }
