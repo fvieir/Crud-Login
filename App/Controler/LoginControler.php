@@ -1,15 +1,18 @@
 <?php 
 
-require "..\Lib\Conexao.php";
+require_once "App/Model/Login.php";
 
-$send_login = filter_input(INPUT_POST,'sendLogin', FILTER_SANITIZE_STRING);
+class LoginControler {
 
-if (isset($send_login)) {
-    
-   
-} else {
+    public function listar (){
 
-    
+        $login = new Login();
+        $login->ListarUsuario();
+
+        $_REQUEST['login'] = $login;
+        require "App/View/login.php";
+    }
+
 }
 
 

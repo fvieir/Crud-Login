@@ -4,21 +4,23 @@ class Conexao {
 
 public static $conn;
 
+
 public function __construct(){ // Construtor da classe
 
 }
 
-public static function getConexao(){
+public static function getInstance(){
     
-    define('DBHOST','root');
+    define('DBHOST','rot');
     define('DBSENHA',"");
 
-    if(!isset($conn)){
-        self::$conn = new PDO('mysql:localhost;dbname=mvc',DBHOST,DBSENHA);
-        self::$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);//ATRIBUTO DE RELATORIO DE ERROS EXCEÇÕES.
+    if(!isset($instance)){
+        self::$instance = new PDO('mysql:localhost;dbname=mvc',DBHOST,DBSENHA, 
+    array(PDO::ATTR_INIT_COMMAND => "SET NAMES utf8"));
+        self::$instance->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);//ATRIBUTO DE RELATORIO DE ERROS EXCEÇÕES.
     }
 
-    return self::$conn;
+    return self::$instance;
 }
 
 }

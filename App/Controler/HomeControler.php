@@ -7,7 +7,7 @@ class HomeControler
 	}
 
 	function login(){
-		require "App/View/login.php";
+		require "App/Controler/LoginControler.php";
 	}
 
 }

@@ -1,3 +1,9 @@
+<?php 
+$login = $_REQUEST['login'];
+echo $login;
+
+?>
+
 
 <!doctype html>
 <html lang="pt-br">
