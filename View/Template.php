@@ -11,7 +11,11 @@
     </head>
 <body>
 
-<?php require 'View/'.$dadosView.'.php'; ?>
+<?php 
+
+    $this->CarregarViewNoTemplate($dadosView);
+
+?>
 
 
 </body>

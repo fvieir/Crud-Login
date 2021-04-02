@@ -1,1 +1,1 @@
-Chamou o home pela view
+Entrou na home -> index();

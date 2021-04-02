@@ -15,21 +15,21 @@ class Core {
 
             if (isset($url) && !empty($url)) {
         
-                $url = explode('/',$url);
-                $controller = $url[0];
-                array_shift($url);
+                $url = explode('/',$url);// Separando classe/Metodo/Paramentros
+                $controller = $url[0]; // Atribuinto nome da classe no controller
+                array_shift($url); // apagando primeira posição do controller, para verificar se tem meotodo
 
             }
 
-            if (isset($url) && !empty($url)) {
-                $metodo = $url[0];
-                array_shift($url);
+            if (isset($url) && !empty($url)) { // Verifica se tem metodo
+                $metodo = $url[0]; // Atribui na variavel metodo a posição 0 do array
+                array_shift($url); // apagando primeira posição do controller, para verificar se tem paramentros
                
             } else {
-                $metodo = 'index';
+                $metodo = 'index'; // se não tiver meotodo, atribiu o valor padrão
             }
 
-            $parametro = count($url) > 0 ? $url[0] : '';
+            $parametro = count($url) > 0 ? $url[0] : ''; // Contagem do array, para verificar sem tem conteudo
            
 
         }else { // Se não existir url, os valores serão padrão
@@ -40,8 +40,9 @@ class Core {
 
         $caminho = '/url_amigavel_1/Controllers/'.$controller;
 
+        // Verifica se não tem o caminho no diretorio de pastas
         if(!file_exists($caminho) && !method_exists($controller,$metodo)){
-            $controller = 'homeController';
+            $controller = 'homeController'; // Se usuario tentar digitar um caminho, pode chamar a classe error com mensagem erro 404 pagina não encontrada.
             $metodo = 'index';
            
         }

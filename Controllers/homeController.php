@@ -1,9 +1,11 @@
 <?php
 
-class homeController {
+class homeController extends Controller {
 
     public function index (){
-        echo "chamou o meotodo index";
+       
+        $this->CarregarTemplate('home');
+
     }
 
 }

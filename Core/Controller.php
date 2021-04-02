@@ -2,15 +2,21 @@
 
 class Controller {
 
-    public function CarregarTemplate(){
+    public $dados;
 
-        require 'View/Template,php';
+    public function __construct(){
+        $this->dados;
+    }
+
+    public function CarregarTemplate($dadosView){
+
+        require 'View/template.php';
 
     }
 
     public function CarregarViewNoTemplate($dadosView){
 
-        require 'View/'.$dadosView.'/.php';
+        require 'View/'.$dadosView.'.php';
 
     }
 
