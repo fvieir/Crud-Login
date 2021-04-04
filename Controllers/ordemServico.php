@@ -4,13 +4,13 @@ class ordemServico extends Controller {
 
     public function index (){
        
-        $this->CarregarTemplate('ordemServico');
+        $this->CarregarTemplate('ordemServico',$dados = '');
 
     }
 
     public function editar (){
         
-        $this->CarregarTemplate('editarOrdem');   
+        $this->CarregarTemplate('editarOrdem',$dados = '');   
 
     }
 

@@ -8,14 +8,15 @@ class Controller {
         $this->dados;
     }
 
-    public function CarregarTemplate($dadosView){
+    public function CarregarTemplate($dadosView, $dados){
 
         require 'View/template.php';
 
     }
 
-    public function CarregarViewNoTemplate($dadosView){
+    public function CarregarViewNoTemplate($dadosView,$dados){
 
+        //extract($dados =array());
         require 'View/'.$dadosView.'.php';
 
     }
