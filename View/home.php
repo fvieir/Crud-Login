@@ -1,4 +1,13 @@
 <form class="form-signin" method="POST" action="loginController">
+
+        <?php       
+            session_start();
+            if(isset($_SESSION['msg'])){
+                echo $_SESSION['msg'];
+                unset($_SESSION['msg']);
+            }
+        ?>
+
         <img class="mb-4" src="imagens/logo.png" alt="" width="72" height="72">
         <h1 class="h3 mb-3 font-weight-normal">Area Restrita</h1>
        

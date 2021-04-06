@@ -1,10 +1,10 @@
 <?php
 
-class ordemServico extends Controller {
+class homeAutenticada extends Controller {
 
     public function index (){
        
-        $this->CarregarTemplate('ordemServico',$dados = '');
+        $this->CarregarTemplate('homeAutenticada',$dados = '');
 
     }
 

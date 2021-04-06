@@ -1,3 +1,17 @@
+ <?php
+
+session_start();    
+if(!isset( $_SESSION['nome']) &&  !isset($_SESSION['logado'])){
+
+    echo ("<script>
+        window.alert('Página não encontrada')
+        window.location.href='homeController';
+    </script>");
+}
+
+?>
+ 
+ 
  <!-- Inicio do Navbar e menu -->
  <nav class="navbar navbar-expand navbar-dark bg-primary">
             <a class="sidebar-toogle text-light mr-3 icone">
@@ -20,7 +34,7 @@
                                     <i class="fas fa-user-circle"></i>
                                 </span>Perfil
                             </a>
-                            <a class="dropdown-item" href="#">
+                            <a class="dropdown-item" href="logoutController">
                                 <span class="pers-icone">
                                     <i class="fas fa-sign-out-alt"></i>
                                 </span>Sair
@@ -31,11 +45,140 @@
             </div>
         </nav><!-- Termino do Navbar -->
 
-<?php
+        <div class="d-flex">
+            <!-- Inicio do menu lateral -->
+            <nav class="sidebar"> 
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="dashboard.php">
+                            <!-- Adicionar icone Font awesome-->
+                            <span class="pers-icone">
+                                <i class="fas fa-tachometer-alt"></i>
+                            </span>Dashbord
+                        </a>
+                    </li>
+                    <li>
+                        <a  href="#submenu1" data-toggle="collapse">
+                            <span class="pers-icone">
+                                <i class="fas fa-user-circle"></i>
+                            </span>Cadastros
+                        </a>
+                        <ul  class="list-unstyled collapse" id="submenu1">
+                            <li class="active">
+                                <a href="" class="padding-esquerda">
+                                    <span class="pers-icone">
+                                        <i class="fas fa-users"></i>
+                                    </span>Ordem de Serviço
+                                </a>
+                            </li>
+                            <li>
+                                <a href="listar_os.php" class="padding-esquerda">
+                                    <span class="pers-icone">
+                                        <i class="fas fa-key"></i>
+                                    </span>Listar O.S.
+                                </a>
+                            </li>
+                        </ul>
+                    </li>                             
+                    <li>
+                        <a href="logout.php">
+                            <span class="pers-icone">
+                                <i class="fas fa-sign-out-alt"></i>
+                            </span>Sair   
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <!-- Fim do menu lateral -->
 
- echo $dados['nome'];
+            <div class="content p-1 w-100">
+                <div class="list-group-item">
+                    <div class="d-flex">
+                        <div class="mr-auto p-2 mb-1">
+                            <h2 class="display-4 titulo "> Cadastrar Ordem de Serviço</h2>
+                        </div>
+                        <!-- Botão cadastrar usuario -->
+                        <a href="listar_os.php">
+                            <div class="p-2">
+                                <button class="btn btn-outline-info btn-sm"> Listar</button>
+                            </div>
+                        </a>
+                    </div><hr>
 
-?>
+                    <form method="POST" action="OrdemServicoController/cadastrar">
+                        <div class="form-row">
+                            <div class="form-group col-md-2">
+                                <label>Codigo da O.S.</label>
+                                <input name="codigo" value="<?php echo ($dados['codigo']); ?>" type="text" class="form-control" id="codigo" readonly = "true" >
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <label>Tag</label>
+                                <input name="tag" type="text" class="form-control" id="tag" placeholder="Descrição de forma resumida">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label>Tipo de Manutenção</label>
+                                <input name="tipman" type="text" class="form-control" id="tipman" placeholder="Tipo de Manutenção">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Setor Executante</label>
+                                <input name="setexe" type="text" class="form-control" id="setexe" placeholder="Setor que ira executar a Manutenção">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label>Responsável</label>
+                                <input name="resp" type="text" class="form-control" id="resp" placeholder="Quem vai executar a Manutenção?">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Aplicação</label>
+                                <input name="aplic" type="text" class="form-control" id="aplic" placeholder="Qual maquina ou equipamento precisa de Manutenção">
+                            </div>         
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label>Estado</label>
+                                <select name="estado" id="estado" class="form-control">
+                                    <option selected>Selecione</option>
+                                    <option value="1">MG</option>
+                                    <option value="2">SP</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Cidade</label>
+                                <select name="cidade" id="cidade" class="form-control">
+                                    <option selected>Selecione</option>
+                                    <option value="1">Pará de Minas</option>
+                                    <option value="2">Belo horizonte</option>
+                                    <option value="3">Santos</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            	<div class="form-group col-md-6">
+                            		<label>Empresa</label>
+                            		<input type="text" name="empresa" class="form-control" id="empresa" placeholder="Digite o nome da empresa do Serviço">
+                            	</div>
+                            	<div class="form-group col-md-6">
+                            		<label>Filial</label>
+                            		<input type="text" name="filial" class="form-control" id="filial" placeholder="Digite o nome da Filial que precisa do servico">
+                            	</div>
+                         </div>
+                           
+                        
+                        <div class="form-group">
+                            <label>Observação</label>
+                            <textarea name="regserv" rows="5" class="form-control" id="regserv" placeholder="Registre sua solicitação de Serviço"></textarea>
+                        </div>
+                        <button type="submit" name="sendCadastro" class="btn btn-success" value="cadastrar">Cadastrar</button>
+                    </form>
+                </div>
+            </div>    
+        </div> 
+
 
 <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->

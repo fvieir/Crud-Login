@@ -9,7 +9,6 @@ class Controller {
     }
 
     public function CarregarTemplate($dadosView, $dados){
-
         require 'View/template.php';
 
     }
