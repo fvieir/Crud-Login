@@ -3,8 +3,20 @@
 
 class OrdemServico {
 
-    public function cadastrar(){  
-    
+    public function cadastrar($codigo,$tag,$tipman,$setexe,$resp,$aplic,
+                                $estado,$cidade,$empresa,$filial,$regserv){  
+        
+        $sql = "INSERT INTO ordemservico (TAG,TIPMAN,SETEXE,RESP,APLIC,ESTADO,CIDADE,EMPRESA,FILIAL,REGSERV) 
+        VALUES ('".$tag."','".$tipman."','".$setexe."','".$resp."','".$aplic."','".$estado."','".$cidade."',
+            '".$empresa."','".$filial."','".$regserv."') "; 
+
+        $con = Conexao::getInstance()->prepare($sql);
+        $con->execute();
+        if($con->rowCount() == 1){
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public function numeroAutomatico(){
@@ -16,5 +28,4 @@ class OrdemServico {
         $dados = $con->fetch();
         return $dados;
     }
-
 }

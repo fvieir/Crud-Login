@@ -1,4 +1,4 @@
-voce esta editando a OS;
+voce esta listando OS;
 
 <?php
 
