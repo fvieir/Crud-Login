@@ -103,7 +103,13 @@ if(!isset( $_SESSION['nome']) &&  !isset($_SESSION['logado'])){
                             </div>
                         </a>
                     </div><hr>
-
+                    <?php
+                        
+                        if (isset($_SESSION['msg'])) {
+                            echo $_SESSION['msg'];
+                            unset($_SESSION['msg']);
+                        }
+                    ?>
                     <form method="POST" action="OrdemServicoController/cadastrar">
                         <div class="form-row">
                             <div class="form-group col-md-2">

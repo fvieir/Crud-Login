@@ -43,5 +43,7 @@ class loginController extends Controller
       $_SESSION['msg'] = "<div class='alert alert-danger'> Página não encontrada! </div>";
       header("Location: homeController.php");
     }
-  } 
+  }
+  
+ 
 }

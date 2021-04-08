@@ -12,9 +12,12 @@ class OrdemServico {
 
         $con = Conexao::getInstance()->prepare($sql);
         $con->execute();
+
         if($con->rowCount() == 1){
             return true;
         } else {
+            throw new Exception("Erro ao cadastrar OS.");
+            
             return false;
         }
     }
@@ -27,5 +30,22 @@ class OrdemServico {
         $con->execute();
         $dados = $con->fetch();
         return $dados;
+    }
+
+
+    public function listar(){
+       
+        $sql = "SELECT * FROM ordemservico ORDER BY CODOR DESC";
+        $con = Conexao::getInstance()->prepare($sql);
+        $con->execute();
+
+        if ($con->rowCount() == 0) {
+    
+            throw new Exception("Erro ao listar OS.");
+        } 
+
+        $dados = $con->fetchall(PDO::FETCH_ASSOC);
+        return $dados;
+        
     }
 }

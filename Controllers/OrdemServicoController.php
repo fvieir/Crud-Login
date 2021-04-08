@@ -2,7 +2,6 @@
 
 class OrdemServicoController extends Controller {
 
-
     public function index (){
     
         $OrdemServico = new OrdemServico();
@@ -13,13 +12,11 @@ class OrdemServicoController extends Controller {
 
     public function cadastrar ()
     {
-
         $OrdemServico = new OrdemServico();
-
         $sendCadastro = filter_input(INPUT_POST,'sendCadastro', FILTER_SANITIZE_STRING);
 
-        if (isset($sendCadastro)) {
-            
+        if (isset($sendCadastro)) 
+        {
             $codigo  = filter_input(INPUT_POST, 'codigo', FILTER_SANITIZE_NUMBER_INT);
             $tag     = filter_input(INPUT_POST, 'tag', FILTER_SANITIZE_STRING);
             $tipman  = filter_input(INPUT_POST, 'tipman', FILTER_SANITIZE_STRING);
@@ -32,19 +29,28 @@ class OrdemServicoController extends Controller {
             $filial  = filter_input(INPUT_POST, 'filial', FILTER_SANITIZE_STRING);
             $regserv = filter_input(INPUT_POST, 'regserv', FILTER_SANITIZE_STRING);
         
-            $dados = $OrdemServico->cadastrar($codigo,$tag,$tipman,$setexe,$resp,$aplic,
+            try {
+                $dados = $OrdemServico->cadastrar($codigo,$tag,$tipman,$setexe,$resp,$aplic,
                                         $estado,$cidade,$empresa,$filial,$regserv);
-            if ($dados == 1) {
-                $this->CarregarTemplate('listarOrdem',$dados); 
-            }else {
-                echo"falhou";
+                
+            header("Location: ../ordemServicoController/Listar");
+
+            } catch (Exception $e) {
+                session_start();
+                $_SESSION['msg'].= "<div class='alert alert-danger'> {$e->getMessage()} </div>";
+                header("Location: ../ordemServicoController");
             }
 
         } else {
             exit;
         }
-         
+    }
 
+    public function Listar ()
+    {
+        $OrdemServico = new ordemServico();
+        $dados = $OrdemServico->listar();
+        $this->CarregarTemplate('listarOrdem',$dados); 
     }
 
 }
