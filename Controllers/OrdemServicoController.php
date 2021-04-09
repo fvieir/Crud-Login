@@ -2,6 +2,9 @@
 
 class OrdemServicoController extends Controller {
 
+    public $dados;
+    public $id;
+
     public function index (){
     
         $OrdemServico = new OrdemServico();
@@ -12,7 +15,6 @@ class OrdemServicoController extends Controller {
 
     public function cadastrar ()
     {
-        $OrdemServico = new OrdemServico();
         $sendCadastro = filter_input(INPUT_POST,'sendCadastro', FILTER_SANITIZE_STRING);
 
         if (isset($sendCadastro)) 
@@ -30,6 +32,7 @@ class OrdemServicoController extends Controller {
             $regserv = filter_input(INPUT_POST, 'regserv', FILTER_SANITIZE_STRING);
         
             try {
+                $OrdemServico = new OrdemServico();
                 $dados = $OrdemServico->cadastrar($codigo,$tag,$tipman,$setexe,$resp,$aplic,
                                         $estado,$cidade,$empresa,$filial,$regserv);
                 
@@ -51,6 +54,47 @@ class OrdemServicoController extends Controller {
         $OrdemServico = new ordemServico();
         $dados = $OrdemServico->listar();
         $this->CarregarTemplate('listarOrdem',$dados); 
+    }
+
+    public function Apagar(){
+        
+        $id = filter_input(INPUT_GET, 'pag', FILTER_SANITIZE_STRING); 
+        $id = explode('/',$id);
+        $id = $id[2];
+       
+        try {
+            $OrdemServico = new ordemServico();
+            $dados = $OrdemServico->apagar($id);
+
+            session_start();
+            $_SESSION['msg'].= "<div class='alert alert-success'>Exluido com sucesso!
+                                    <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                                        <span aria-hidden='true'>&times;</span>
+                                    </button>
+                                </div>";
+            header("Location: ../../ordemServicoController/Listar");
+
+        } catch (Exception $e) {
+            echo $e->getMessage();
+            exit;
+        }
+    }
+
+    public function Visualizar() 
+    {
+        $id = filter_input(INPUT_GET, 'pag', FILTER_SANITIZE_STRING); 
+        $id = explode('/',$id);
+        $id = $id[2];
+
+        try {
+            $OrdemServico = new ordemServico();
+            $dados = $OrdemServico->visualizar($id);
+
+            $this->CarregarTemplate('visualizarOrdem',$dados);
+
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
     }
 
 }

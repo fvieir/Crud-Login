@@ -11,9 +11,26 @@
         <link href="/open-iconic/font/css/open-iconic-bootstrap.css" rel="stylesheet">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
         <!-- Font Awesome CSS-->
+
+        <?php 
+            if ($dadosView == 'ordemServico') {
+             ?>
+        <link rel="stylesheet" href="Public/css/listar_usuario.css">     
         <link rel="stylesheet" href="Public/css/fontawesome.min.css">
         <!-- Font awesome JS-->
-        <script defer src="Public/js/fontawesome.min.js"></script>
+        <script defer src="/Public/js/fontawesome.min.js"></script>
+        <?php
+            } else {
+                ?>
+        <link rel="stylesheet" href="../Public/css/listar_usuario.css">       
+        <link rel="stylesheet" href="../Public/css/fontawesome.min.css">
+        <!-- Font awesome JS-->
+        <script defer src="../Public/js/fontawesome.min.js"></script>
+        <?php
+            }
+        ?>
+
+       
 
         <title>V&S</title>
     </head>

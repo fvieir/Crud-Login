@@ -48,4 +48,35 @@ class OrdemServico {
         return $dados;
         
     }
+
+    public function apagar($id)
+    {
+
+        $sql = 'DELETE FROM ordemservico WHERE CODOR = :id';
+        $con = Conexao::getInstance()->prepare($sql);
+        $con->bindValue('id',$id);
+        $con->execute();
+       
+        if ($con->rowCount() == 0) {
+            throw new Exception("Erro ao deletar Registo");
+        } 
+        return true;
+    }
+
+
+    public function visualizar($id){
+
+        $sql = "SELECT * FROM ordemservico WHERE CODOR = :id";
+        $con = Conexao::getInstance()->prepare($sql);
+        $con->bindValue('id', $id);
+        $con->execute();
+
+        if ($con->rowCount() == 0) {
+            
+            throw new Exception("Ocorreu algum erro");
+        }
+
+        $dados = $con->fetch();
+        return $dados;
+    }
 }

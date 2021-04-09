@@ -71,7 +71,7 @@ if(!isset( $_SESSION['nome']) &&  !isset($_SESSION['logado'])){
                                 </a>
                             </li>
                             <li>
-                                <a href="listar_os.php" class="padding-esquerda">
+                                <a href="OrdemServicoController/Listar" class="padding-esquerda">
                                     <span class="pers-icone">
                                         <i class="fas fa-key"></i>
                                     </span>Listar O.S.
@@ -97,7 +97,7 @@ if(!isset( $_SESSION['nome']) &&  !isset($_SESSION['logado'])){
                             <h2 class="display-4 titulo "> Cadastrar Ordem de Serviço</h2>
                         </div>
                         <!-- Botão cadastrar usuario -->
-                        <a href="listar_os.php">
+                        <a href="ordemServicoController/Listar">
                             <div class="p-2">
                                 <button class="btn btn-outline-info btn-sm"> Listar</button>
                             </div>
